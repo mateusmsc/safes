@@ -1,10 +1,14 @@
 module.exports = (sequelize, DataTypes) => {
   const paciente = sequelize.define('paciente', {
+    cod: {
+      type: DataTypes.INTEGER,
+      primaryKey: true
+    },
     nome: DataTypes.STRING,
     cpf: DataTypes.STRING,
-    id_usuario: DataTypes.INTEGER,
+    cod_usuario: DataTypes.INTEGER,
     dt_nascimento: DataTypes.DATE
-  }, { freezeTableName: true });
+  }, { freezeTableName: true, timestamps: false });
 
   return paciente;
 }
