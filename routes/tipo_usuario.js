@@ -15,17 +15,17 @@ app.post('/register', async (req, res) => {
 });
 
 //
-app.post('/del', async (req, res) => {
+app.delete('/del/:cod', async (req, res) => {
   const tipo_usuario = await db.tipo_usuario.destroy({
     where: {
-      cod: req.body.cod
+      cod: req.params.cod
     }
   })
   res.json(tipo_usuario);
 });
 
 
-app.post('/update', async (req, res) => {
+app.put('/update/:cod', async (req, res) => {
   const tipo_usuario = await db.tipo_usuario.update(
     {
       nivel: req.body.nivel,
@@ -33,7 +33,7 @@ app.post('/update', async (req, res) => {
     },
     {
       where: {
-        cod: req.body.cod
+        cod: req.params.cod
       }
     })
   res.json(tipo_usuario);
